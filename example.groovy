@@ -23,15 +23,9 @@ pipelineJob('run_taf'){
         agent any
 
         stages {
-            stage('CheckoutGrafanaAnsible') {
+            stage('test') {
               steps {
-                  sh 'mkdir -p grafana-ansible'
-                  dir("grafana-ansible")
-                   {
-                      git branch: "${params.branch}",
-                      credentialsId: "${params.playbook_credentials}",
-                      url: "${params.bb_url}/smd/grafana-ansible.git"
-                    }
+                  sh 'Echo hello ${params.environment}'
                 }
             }
         }'''.stripIndent())
